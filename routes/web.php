@@ -170,4 +170,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/sas/{sas}/edit', [SaController::class, 'edit'])->name('sa.edit');
     Route::put('/sas/{sa}', [SaController::class, 'update'])->name('sas.update');
     // Route::get('/sa', [SaController::class, 'create'])->name('sa_create');
+
+    Route::get('/users', [AuthController::class,'users'])->name('user-index');
+    Route::get('/add-users', [AuthController::class,'adduser'])->name('add-user');
+    Route::post('/users', [AuthController::class, 'storeuser'])->name('store-user');
+   // Menampilkan form edit user
+Route::get('/users/{id}/edit', [AuthController::class, 'edituser'])->name('edit-user');
+
+// Memproses update user
+Route::put('/users/{id}', [AuthController::class, 'updateuser'])->name('update-user');
+Route::delete('/users/{id}', [AuthController::class, 'deleteuser'])->name('delete-user');
+
 });
